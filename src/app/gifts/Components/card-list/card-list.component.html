@@ -1,0 +1,24 @@
+<div class="row">
+
+    <div *ngFor="let gif of gifs" class="col-md-3 col-sm-6">
+
+        <div class="card mb-2 text-center bg-dark">
+
+            <img [src]="gif.images.fixed_height_downsampled.url" [alt]="gif.title"
+                class="card-img-top animate__animated animate__fadeIn" (load)="onLoad()"
+                [ngStyle]="{display: hasLoad ? '' : 'none'}">
+
+            <div class="d-flex justify-content-center mt-3">
+                <img *ngIf="!hasLoad" src="assets/loader.svg" alt="" height="35" width="35"
+                    class="d-flex justify-content-center">
+            </div>
+
+            <div class="card-body text-white">
+                <p class="card-text">
+                    {{gif.title | titlecase}}
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
